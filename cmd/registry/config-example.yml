@@ -3,10 +3,21 @@ log:
   fields:
     service: registry
 storage:
-  cache:
-    blobdescriptor: inmemory
-  filesystem:
-    rootdirectory: /var/lib/registry
+  s3:
+      accesskey: awsaccesskey
+      secretkey: awssecretkey
+      region: us-west-2
+      regionendpoint: http://myobjects.local
+      bucket: bucketname
+      encrypt: true
+      keyid: mykeyid
+      secure: true
+      v4auth: true
+      chunksize: 5242880
+      multipartcopychunksize: 33554432
+      multipartcopymaxconcurrency: 100
+      multipartcopythresholdsize: 33554432
+      rootdirectory: /s3/object/name/prefix
 http:
   addr: :5000
   headers:
